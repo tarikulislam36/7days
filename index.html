@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 350px;
+    position: relative;
+}
+
+h1 {
+    font-size: 1.8rem;
+    color: #fff;
+}
+
+p {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 25px;
+}
+
+.btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+#yesBtn {
+    background: #ff4b5c;
+    color: white;
+}
+
+#noBtn {
+    background: white;
+    color: #ff4b5c;
+    position: fixed;
+}
+
+.love-msg {
+    display: none;
+    font-size: 1.5rem;
+    color: white;
+    margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Hey My Love ❤️</h1>
+    <p>Do you love me? 🥺</p>
+
+    <button id="yesBtn" class="btn">Yes 💖</button>
+    <button id="noBtn" class="btn">No 😢</button>
+
+    <div class="love-msg" id="loveMsg">
+        I knew it! 😍 I love you sooo much 💕
+    </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const loveMsg = document.getElementById("loveMsg");
+
+// Function to move NO button safely inside screen
+function moveNoButton() {
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
+
+    const maxX = window.innerWidth - btnWidth - 10;
+    const maxY = window.innerHeight - btnHeight - 10;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
+// Move on touch (mobile)
+noBtn.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    moveNoButton();
+});
+
+// Move on click (backup for desktop)
+noBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    moveNoButton();
+});
+
+// Optional: also move when finger gets close
+noBtn.addEventListener("touchmove", moveNoButton);
+
+// YES button
+yesBtn.addEventListener("click", () => {
+    loveMsg.style.display = "block";
+});
+</script>
+
+</body>
+</html>
